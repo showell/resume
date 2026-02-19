@@ -35,4 +35,6 @@ Oxlint:
 * `npx oxlint`
 
 Prettier:
+* grab .prettierrc for 4-space tabs
 * `npx prettier src/*.ts --write`
+* git add .prettierrc
