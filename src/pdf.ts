@@ -6,6 +6,44 @@ import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 let normal_font: any;
 let bold_font: any;
 
+const CLASSES = `
+Board
+BoardAreaSingleton
+BoardCard
+Card
+CardStack
+CompleteTurnButton
+Deck
+DialogShell
+DragDropHelperSingleton
+EditableText
+EventManagerSingleton
+Game
+GameEvent
+GameEventTrackerSingleton
+Hand
+HandCard
+MainGamePage
+PhysicalBoardCard
+PhysicalBoardSingleton
+PhysicalCardStack
+PhysicalGame
+PhysicalHand
+PhysicalHandCard
+PhysicalPlayer
+Player
+PlayerAction
+PlayerAreaSingleton
+PlayerGroupSingleton
+PlayerTurn
+PopupSingleton
+ReplayButton
+ScoreSingleton
+SoundEffectsSingleton
+StatusBarSingleton
+UndoButton
+`.trim().split('\n');
+
 function draw_contact_info(page: any) {
     let color: any;
     let size: number;
@@ -224,6 +262,40 @@ async function typescript(doc: PDFDocument, page: any) {
         width: 320,
         height: 165,
     });
+
+    y -= 20;
+    size = 7;
+
+    const mid = CLASSES.length / 3 + 1;
+
+    const col1 = CLASSES.slice(0, mid);
+    const col2 = CLASSES.slice(mid, 2 * mid);
+    const col3 = CLASSES.slice(2 * mid);
+    const top_y = y;
+
+    const x_offset = 110;
+
+
+    for (const class_ of col1) {
+        y -= 12;
+        draw(class_);
+    }
+
+    y = top_y;
+    x += x_offset;
+
+    for (const class_ of col2) {
+        y -= 12;
+        draw(class_);
+    }
+
+    y = top_y;
+    x += x_offset;
+
+    for (const class_ of col3) {
+        y -= 12;
+        draw(class_);
+    }
 }
 
 async function test() {
