@@ -1,4 +1,5 @@
 const fs = require('fs');
+import { readFile } from 'node:fs/promises';
 
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 
@@ -34,9 +35,9 @@ function draw_contact_info(page: any) {
 
         page.setFont(normal_font);
         color = rgb(0, 0.4, 0.2);
-        size = 10;
+        size = 9;
         y -= 5;
-        x += 17;
+        x += 85;
 
         const lines = [
             "202-213-7553",
@@ -85,7 +86,7 @@ function draw_contact_info(page: any) {
 
     {
         y = 790;
-        x = 280;
+        x = 230;
         size = 22;
         color = rgb(0, 0.1, 0.1);
 
@@ -93,7 +94,7 @@ function draw_contact_info(page: any) {
 
         y -= 5;
         x += 15;
-        size = 11;
+        size = 10;
         color = rgb(0, 0.4, 0.2);
 
         const lines = [
@@ -124,19 +125,79 @@ function draw_contact_info(page: any) {
         ];
 
         for (const line of lines) {
-            y -= 14;
+            y -= 13;
+            draw(line);
+        }
+    }
+
+
+    {
+        y = 780;
+        x = 450;
+        size = 7;
+        color = rgb(0.5, 0, 1);
+
+        const lines = [
+            "5 BC Calculus, 800 Math SAT",
+            "dBase, government contracting",
+            "Turbo Pascal, Karel the Robot",
+            "8086 assembly",
+            "Combinatorics",
+            "Linear Algebra",
+            "Eight queens in C",
+            "800 Math GRE",
+            "REXX programming language",
+            "Karnaugh maps",
+            "Kernighan + Ritchie C",
+            "PL/SQL",
+            "MFC, Windows NT, Visual Basic",
+            "two-tier client/server architecture",
+            "Effective C++",
+            "FD_SET(STDIN_FILENO, &read_fds);",
+            "home-grown HTML templates in C",
+            "Y2K audits",
+            "Perl, YAML, MoinMoin, Ward's wiki",
+            "Test-first development",
+            "Asynchronous file handling with asyncore",
+            "Surprise and delight",
+            "CoffeeScript",
+            "PHP isn't so bad",
+            "I forgot how fast C is!",
+            "Oh, yes it is",
+            "jQuery? seriously?",
+            "IE will not die",
+            "Elm model/view/update",
+        ];
+
+        for (const line of lines) {
+            y -= 11;
             draw(line);
         }
     }
 }
 
+async function get_image(doc: PDFDocument, fn: string): Promise<any> {
+    const buffer = await readFile(fn);
+
+    const image = await doc.embedJpg(buffer);
+
+    return image;
+}
+
 async function test() {
     const doc = await PDFDocument.create()
+
+    const image = await get_image(doc, "steve.jpeg");
 
     normal_font = await doc.embedFont(StandardFonts.TimesRoman);
     bold_font = await doc.embedFont(StandardFonts.TimesRomanBold);
 
     const page = doc.addPage()
+
+    page.drawImage(image, {
+        x: 30,
+        y: 700,
+    });
 
     draw_contact_info(page);
 
