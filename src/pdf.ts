@@ -6,12 +6,11 @@ let normal_font: any;
 let bold_font: any;
 
 function draw_contact_info(page: any) {
-    page.setFont(bold_font);
-    let color = rgb(0, 0, 0);
-    let size = 25;
+    let color: any;
+    let size: number;
 
-    let x = 30;
-    let y = 790;
+    let x: number;
+    let y: number;
 
     function draw(text: string) {
         page.drawText(text, {
@@ -23,13 +22,21 @@ function draw_contact_info(page: any) {
     }
 
     {
+        page.setFont(bold_font);
+
+        color = rgb(0, 0, 0);
+        size = 25;
+
+        x = 30;
+        y = 790;
+
         draw("Steve Howell");
 
         page.setFont(normal_font);
         color = rgb(0, 0.4, 0.2);
-        size = 15;
+        size = 10;
         y -= 5;
-        x += 20;
+        x += 17;
 
         const lines = [
             "202-213-7553",
@@ -42,7 +49,36 @@ function draw_contact_info(page: any) {
         ];
 
         for (const line of lines) {
-            y -= 20;
+            y -= 12;
+            draw(line);
+        }
+    }
+
+    {
+        color = rgb(0, 0, 0)
+        size = 18;
+        x = 30;
+        y -= 40;
+        page.setFont(bold_font);
+
+        draw("Full-stack Developer");
+
+        page.setFont(normal_font);
+        color = rgb(0, 0.4, 0.2);
+        size = 10;
+        y -= 5;
+        x += 17;
+
+        const lines = [
+            "25+ years Python",
+            "25+ years JavaScript/TypeScript",
+            "C/C++ since 80s/90s",
+            "Oracle/SqlServer/mysql/postgres",
+            "Django/Rails",
+        ];
+
+        for (const line of lines) {
+            y -= 12;
             draw(line);
         }
     }
@@ -56,32 +92,39 @@ function draw_contact_info(page: any) {
         draw("40 years of experience:");
 
         y -= 5;
-        x += 16;
+        x += 15;
         size = 11;
         color = rgb(0, 0.4, 0.2);
 
         const lines = [
-            "Computer Sciences Corporation",
-            "Noise Cancellation Technolgies",
-            "Duke University BS EE/CS 1989",
-            "Oracle Corporation",
-            "Watson Wyatt Worldwide",
-            "American Management Systems",
-            "NXT credit card services",
-            "RealNetworks",
-            "ATAC Tutoring",
-            "Guido van Robot (Yorktown High School)",
-            "YAML and MoinMoin open source",
-            "NXT/MerchantLink Chase Paymentech",
-            "Amazon Fresh team, Amazon",
-            "Domaintools",
-            "Zulip startup",
-            "Dropbox",
-            "Zulip free software project (Kandra Systems)",
+            "1980s:",
+            "      TI 99/4A BASIC 1982",
+            "      Computer Sciences Corporation",
+            "      Noise Cancellation Technolgies",
+            "      Duke University BS EE/CS 1989",
+            "",
+            "1990s:",
+            "      Oracle Corporation",
+            "      Watson Wyatt Worldwide",
+            "      American Management Systems",
+            "      NXT credit card services",
+            "      RealNetworks",
+            "",
+            "2000s:",
+            "      ATAC Tutoring",
+            "      Guido van Robot (Yorktown High School)",
+            "      NXT/MerchantLink Chase Paymentech",
+            "      Amazon Fresh team, Amazon",
+            "",
+            "Recent:",
+            "      2013: Domaintools",
+            "      2014: Zulip startup",
+            "      2015: Dropbox (acquisition)",
+            "      2016-present: Zulip free software project",
         ];
 
         for (const line of lines) {
-            y -= 20;
+            y -= 14;
             draw(line);
         }
     }
