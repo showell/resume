@@ -192,6 +192,40 @@ async function get_png(doc: PDFDocument, fn: string): Promise<any> {
     return image;
 }
 
+async function typescript(doc: PDFDocument, page: any) {
+    let color: any;
+    let size: number;
+
+    let x: number;
+    let y: number;
+
+    function draw(text: string) {
+        page.drawText(text, {
+            color,
+            size,
+            x,
+            y,
+        });
+    }
+
+    color = rgb(0, 0, 0);
+    size = 15;
+
+    x = 245;
+    y = 430;
+
+    draw("TypeScript example:");
+
+    y -= 170;
+    const lyn = await get_png(doc, "lynrummy.png");
+    page.drawImage(lyn, {
+        x,
+        y,
+        width: 320,
+        height: 165,
+    });
+}
+
 async function test() {
     const doc = await PDFDocument.create()
 
@@ -207,13 +241,7 @@ async function test() {
         y: 700,
     });
 
-    const lyn = await get_png(doc, "lynrummy.png");
-    page.drawImage(lyn, {
-        x: 250,
-        y: 250,
-        width: 320,
-        height: 185,
-    });
+    await typescript(doc, page);
 
     draw_contact_info(page);
 
