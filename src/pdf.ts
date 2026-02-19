@@ -266,14 +266,16 @@ async function typescript(doc: PDFDocument, page: any) {
     y -= 20;
     size = 7;
 
-    const mid = CLASSES.length / 3 + 1;
+    x += 10;
+
+    const mid = CLASSES.length / 3 + 0.5;
 
     const col1 = CLASSES.slice(0, mid);
     const col2 = CLASSES.slice(mid, 2 * mid);
     const col3 = CLASSES.slice(2 * mid);
     const top_y = y;
 
-    const x_offset = 110;
+    const x_offset = 115;
 
 
     for (const class_ of col1) {
