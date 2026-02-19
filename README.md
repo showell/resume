@@ -19,20 +19,16 @@ Setting up initial project:
 * git status
 * git commit -am "start"
 
-
-Initial setup:
-* `npm install vite --save-dev`
-
 Terminal setup
 * code editor
-* dev server: `npm run dev`
+* dev server: `npx vite`
 * TS compiler: `npx tsc -w --noEmit`
 * misc (mostly git)
-
 
 Oxlint:
 * `npm add -D oxlint`
 * `npx oxlint`
+* steal `.oxlintrc.json` as needed
 
 Prettier:
 * grab .prettierrc for 4-space tabs
