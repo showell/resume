@@ -47,3 +47,11 @@ Prettier:
 * grab .prettierrc for 4-space tabs
 * `npx prettier src/*.ts --write`
 * git add .prettierrc
+
+## PDF
+
+* npm install --save pdf-lib
+* maybe later: https://github.com/Hopding/pdf-lib/tree/master?tab=readme-ov-file#fontkit-installation
+* npm install vite-node --save-dev
+* npx vite-node src/pdf.ts
+* npm i --save-dev @types/node
