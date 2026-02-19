@@ -176,7 +176,7 @@ function draw_contact_info(page: any) {
     }
 }
 
-async function get_image(doc: PDFDocument, fn: string): Promise<any> {
+async function get_jpeg(doc: PDFDocument, fn: string): Promise<any> {
     const buffer = await readFile(fn);
 
     const image = await doc.embedJpg(buffer);
@@ -184,19 +184,35 @@ async function get_image(doc: PDFDocument, fn: string): Promise<any> {
     return image;
 }
 
+async function get_png(doc: PDFDocument, fn: string): Promise<any> {
+    const buffer = await readFile(fn);
+
+    const image = await doc.embedPng(buffer);
+
+    return image;
+}
+
 async function test() {
     const doc = await PDFDocument.create()
 
-    const image = await get_image(doc, "steve.jpeg");
 
     normal_font = await doc.embedFont(StandardFonts.TimesRoman);
     bold_font = await doc.embedFont(StandardFonts.TimesRomanBold);
 
     const page = doc.addPage()
 
-    page.drawImage(image, {
+    const steve = await get_jpeg(doc, "steve.jpeg");
+    page.drawImage(steve, {
         x: 30,
         y: 700,
+    });
+
+    const lyn = await get_png(doc, "lynrummy.png");
+    page.drawImage(lyn, {
+        x: 250,
+        y: 250,
+        width: 320,
+        height: 185,
     });
 
     draw_contact_info(page);
