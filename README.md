@@ -1,0 +1,38 @@
+Setting up initial project:
+
+* crib these files from other projects
+    * README.md
+    * index.html
+    * tsconfig.json
+    * .gitignore
+    * src/main.ts
+* git add README.md index.html tsconfig.json .gitignore src/main.ts
+* npm install vite --save-dev
+* look for compiler errors (separate terminal)
+    * npm install typescript
+    * npx tsc -w --noEmit
+* launch server (separate terminal)
+    * npx vite
+* open in browser (vite shows port)
+    * e.g. http://localhost:5173/
+* git add package-lock.json package.json
+* git status
+* git commit -am "start"
+
+
+Initial setup:
+* `npm install vite --save-dev`
+
+Terminal setup
+* code editor
+* dev server: `npm run dev`
+* TS compiler: `npx tsc -w --noEmit`
+* misc (mostly git)
+
+
+Oxlint:
+* `npm add -D oxlint`
+* `npx oxlint`
+
+Prettier:
+* `npx prettier src/*.ts --write`
