@@ -1,3 +1,16 @@
+## ABOUT
+
+This is a work in progress.  I eventually intend
+to have tools to create my resume from code. My
+code should produce both a browser experience
+(i.e. HTML+TS) and a PDF doc.
+
+For now this project is also a good example of
+a quick-start project using vite.
+
+
+## SETUP
+
 Setting up initial project:
 
 * crib these files from other projects
