@@ -55,3 +55,7 @@ Prettier:
 * npm install vite-node --save-dev
 * npx vite-node src/pdf.ts
 * npm i --save-dev @types/node
+
+Library:
+* https://github.com/Hopding/pdf-lib
+* https://pdf-lib.js.org/docs/api/
